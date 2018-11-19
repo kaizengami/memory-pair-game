@@ -1,0 +1,201 @@
+html, body{
+    height: 100%;
+}
+body{
+	font-family: Arial;
+	margin: 0;
+	overflow-x: hidden; 
+	transition: all .1s ease-out;
+	background-image: linear-gradient(to right top, #394b66, #52618a, #7177ae, #988dd1, #c4a1f2);
+}
+#game_cover{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+	background-image: linear-gradient(to right top, #394b66, #4c6188, #6476ab, #808ccf, #a1a1f2);
+	opacity: 1;
+}
+.difficulty-button{
+	font-size: 50px;
+	font-weight: 600;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	color: #c9dcec;
+	position: relative;
+	display: inline;
+	margin: 30px;
+	cursor: pointer;
+	z-index: 1;
+	transition: letter-spacing .2s ease-in;
+}
+.difficulty-button:hover{
+	color: #a9b1de;
+	letter-spacing: 4px;
+}
+#countdown{
+	position: fixed;
+	user-select: none;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 600px;
+	font-weight: 600;
+	color: #92dfe2;
+	margin-left: -20px;
+	transition: all 1s ease-in;
+}
+.container{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	height: 630px;
+	width: 840px;
+	border: solid 0px black;
+}
+#cards{
+	display: flex;
+	flex-wrap: wrap;
+	opacity: 0;
+	filter: blur(10px);
+}
+.card{
+	font-size: 80px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 4px;
+	width: 23%;
+	box-sizing: border-box;
+	background: #94b7d8;
+	color: #94b7d8;
+	height: 200px;
+	border: 0px solid #94b7d8;
+	/*padding: 50px;*/
+	cursor: pointer;
+	user-select: none;
+	pointer-events: none;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	transform: rotateY(180deg);
+	transition: all .3s ease-out;
+}
+.card:hover{
+	/*animation: shake 0.5s ease;*/
+    animation-iteration-count: 1;
+	/*transform: scale(1.05);*/
+}
+.card-flipped{
+	color: #566777;
+	pointer-events: none !important;
+	/*animation-play-state: paused !important;*/
+	transform: rotateY(0deg);
+}
+.card-image{
+	height: 100%;
+	width: 100%;
+	opacity: 0;
+	background-size: cover;
+}
+.card-image-flipped{
+	opacity: 1 !important;
+}
+
+@keyframes shake
+{
+    15%
+    {
+        transform: rotate(5deg);
+    }
+    30%
+    {
+        transform: rotate(-5deg);
+    }
+    50%
+    {
+        transform: rotate(2deg);
+    }
+    65%
+    {
+        transform: rotate(-2deg);
+    }
+    80%
+    {
+        transform: rotate(1deg);
+    }
+    100%
+    {
+        transform: rotate(0);
+    }
+}
+#game_over{
+  	position: absolute;
+  	margin: auto;
+	/*margin-top: -430px;*/
+	margin-top: 150px;
+  	top: 0; 
+  	left: 0; 
+  	right: 0;
+	height: 400px;
+	width: 600px;
+	border-radius: 5px;
+	background: rgba(77, 88, 122, 0.5);
+	pointer-events: none;
+	opacity: 0;
+	transform: scale(0);
+	transition: all .3s ease-in;
+}
+.game_over-visible{
+	transform: scale(1) !important;
+	opacity: 1 !important;
+	pointer-events: all !important;
+}
+#result{
+	padding: 20px;
+}
+.score{
+	font-size: 20px;
+	font-weight: 600;
+	padding-top: 5px;
+	color: #BEF5DA;
+}
+#new_game{
+	font-size: 30px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	bottom: 0;
+	height: 60px;
+	width: 100%;
+	color: #D3DDE5;
+	background: #6887a7;
+	cursor: pointer;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#new_game:hover{
+	color: #D3DDE5;
+	background: #607e9c;
+}
+#new_game:active{
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.11);
+}
+.hard{
+	color: #FEB1B1;
+	text-transform: uppercase;
+}
+.medium{
+	color: #BABFFE;
+	text-transform: uppercase;
+}
+.ease{
+	color: #98efc4;
+	text-transform: uppercase;
+}
+.best-score{
+	color: #57feff;
+}

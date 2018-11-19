@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+	<title>Memory - Pair Game</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="game_cover">
+		<div class="difficulty-button" id="ease" onclick="StartMenu.start(this.id)">Start</div>
+	</div>
+	<div class="container">
+		<div id="cards"></div>
+	</div>
+	<div id="game_over">
+		<div id="result"></div>
+		<div id="new_game" onclick="GameOver.newGame()">play again</div>
+	</div>
+	<script src="js/main.js"></script>
+</body>
+</html>
