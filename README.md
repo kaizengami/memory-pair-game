@@ -1,5 +1,7 @@
-# Memory - Pair Game
+# Memory – Pair Game
 
-### The game was created during the Kottans frontend course.
+## Project Setup
 
-[Memory - Pair Game - Demo](https://KurosavaAkira.github.io/memory-pair-game/)
+1. Install dependencies: `npm install`
+2. Builds the app for production: `npm run prod` 
+3. Runs the app in the development mode: `npm run dev` 
