@@ -1,10 +1,15 @@
 import './BlackScreenTransition.sass';
 
+const container = document.getElementById('container');
+
 const BlackScreenTransition = {
-    blackScreen : '<div class="black-screen"></div>',
-    show : function () {
-        const container = document.getElementById('container');
-        container.insertAdjacentHTML('beforeend', this.blackScreen);
+    blackScreenIn : '<div class="black-screen-in"></div>',
+    blackScreenOut : '<div class="black-screen-out"></div>',
+    toBlack : function () {
+        container.insertAdjacentHTML('beforeend', this.blackScreenIn);
+    },
+    fromBlack : function () {
+        container.insertAdjacentHTML('beforeend', this.blackScreenOut);
     },
 }
 

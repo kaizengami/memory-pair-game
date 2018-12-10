@@ -13,7 +13,8 @@ module.exports = env => {
       plugins: [new webpack.ProgressPlugin(),
                 new HtmlWebpackPlugin({
                   title: 'Memory - Pair Game',
-                  template: 'src/index.html'
+                  template: 'src/index.html',
+                  favicon: 'static/images/favicons/favicon.png'
                 })
                ]
     },

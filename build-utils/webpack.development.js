@@ -10,6 +10,17 @@ module.exports = () => ({
         use: ["style-loader", "css-loader", "sass-loader"]
       },
       {
+        test: /\.(mov|mp4)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]'
+            }  
+          }
+        ]
+      },
+      {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,
         use: [
           {

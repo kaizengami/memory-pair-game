@@ -1,6 +1,6 @@
 import './DifficultyMenu.sass';
 import MainPage from '../MainPage/MainPage';
-import BlackScreenTransition from '../PageTransition/BlackScreenTransition';
+import BlackScreen from '../PageTransition/BlackScreenTransition';
 
 const game_difficulty_menu = () => {
     return `<div class="difficulty-menu">
@@ -30,7 +30,7 @@ const applyDifficulty = (difficulty) => {
 const pageTransitionEffect = () => {
     const menu = document.getElementsByClassName('difficulty-menu')[0];
     menu.classList.add('difficulty-menu-transition');
-    BlackScreenTransition.show();
+    BlackScreen.toBlack();
 }
 
 const RenderDifficultyMenu = () => {

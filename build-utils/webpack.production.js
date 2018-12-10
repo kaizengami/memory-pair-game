@@ -1,4 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = () => ({
   module: {
@@ -10,6 +11,17 @@ module.exports = () => ({
       {
         test: /\.sass$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.(mov|mp4)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]'
+            }  
+          }
+        ]
       },
       {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,
@@ -24,5 +36,14 @@ module.exports = () => ({
       }
     ]
   },
-  plugins: [new MiniCssExtractPlugin()]
+  plugins: [
+    new MiniCssExtractPlugin(),
+    new CopyWebpackPlugin([
+      {
+        from: 'static/',
+        to: 'static/[path][name].[ext]',
+        toType: 'template'
+      }
+    ])
+  ]
 });
