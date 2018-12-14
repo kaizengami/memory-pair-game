@@ -4,9 +4,9 @@ import RenderFullScreenVideo from '../FullScreenVideo/FullScreenVideo';
 import BlackScreen from '../PageTransition/BlackScreenTransition';
 
 const StartingPage = () => {
+  BlackScreen.fromBlack();
   RenderFullScreenVideo('planet.mp4', 'loop');
   RenderDifficultyMenu();
-  //BlackScreen.hide();
 };
 
 export default StartingPage;
