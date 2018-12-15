@@ -2,9 +2,11 @@ import './index.sass';
 import StartingPage from './components/StartingPage/StartingPage';
 import RenderFullScreenVideo from './components/FullScreenVideo/FullScreenVideo';
 import RenderIntroVideoMenu from './components/StartingPage/IntroVideoMenu';
+import HotKeys from './components/HotKeys';
 
-RenderFullScreenVideo('kottans-intro.mp4', '');
+RenderFullScreenVideo('kottans-intro.mp4', 'loop');
 RenderIntroVideoMenu();
+HotKeys.introVideoSkipButton();
 
 const full_screen_video = document.getElementById('full-screen-video');
 
@@ -12,5 +14,4 @@ full_screen_video.onended = function(e) {
     full_screen_video.remove();
     StartingPage();
 }
-
 

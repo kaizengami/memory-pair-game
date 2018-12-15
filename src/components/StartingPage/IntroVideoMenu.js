@@ -8,6 +8,12 @@ const introVideoMenuHTML = () => {
             </div>`
 }
 
+const introVideoMenuSkipHTML = () => {
+    return `<div id="intro-video-menu-skip">
+                Press ESC to skip
+            </div>`
+}
+
 const addClickEvent = () => {
     const buttons = document.querySelectorAll('.intro-video-menu-box');
     buttons.forEach( button => {
@@ -50,7 +56,7 @@ const buttonHide = () => {
 
 const render = () => {
     const container = document.getElementById('container');
-    return container.insertAdjacentHTML('beforeend', introVideoMenuHTML());
+    return container.insertAdjacentHTML('beforeend', introVideoMenuHTML() + introVideoMenuSkipHTML());
 }
 
 const RenderIntroVideoMenu = () => {
