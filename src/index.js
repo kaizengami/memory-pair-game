@@ -4,9 +4,9 @@ import RenderFullScreenVideo from './components/FullScreenVideo/FullScreenVideo'
 import RenderIntroVideoMenu from './components/StartingPage/IntroVideoMenu';
 import HotKeys from './components/HotKeys';
 
-RenderFullScreenVideo('kottans-intro.mp4', 'loop');
+RenderFullScreenVideo('kottans-intro.mp4', '');
 RenderIntroVideoMenu();
-HotKeys.introVideoSkipButton();
+HotKeys.applyHotKeys();
 
 const full_screen_video = document.getElementById('full-screen-video');
 

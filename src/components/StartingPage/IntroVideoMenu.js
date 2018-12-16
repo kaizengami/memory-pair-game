@@ -20,6 +20,15 @@ const addClickEvent = () => {
         button.addEventListener('click', () => { applyButton(button.value) });
     });
 }
+//remove menu after it hides
+const removeMenuAfterHide = () => {
+    const intro_video_menu = document.getElementById('intro-video-menu');
+    const intro_video_menu_skip = document.getElementById('intro-video-menu-skip');
+    intro_video_menu.addEventListener('animationend', () => { 
+        intro_video_menu.remove() 
+        intro_video_menu_skip.remove() 
+    });
+}
 
 const applyButton = (button) => {
     return buttonsFunc(button);
@@ -62,6 +71,7 @@ const render = () => {
 const RenderIntroVideoMenu = () => {
     render();
     addClickEvent();
+    removeMenuAfterHide();
 }
 
 export default RenderIntroVideoMenu;
