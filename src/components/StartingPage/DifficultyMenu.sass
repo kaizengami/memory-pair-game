@@ -19,7 +19,17 @@ button, input[type="submit"], input[type="reset"]
     font-size: 50px
     color: #f4ffff
     user-select: none
-    transition: opacity .3s ease-out;
+    animation: difficulty-menu 1s ease-in 0s 1
+    transition: opacity .3s ease-out
+    
+@keyframes difficulty-menu
+    0%
+        opacity: 0
+    100%
+        opacity: 1
+
+.difficulty-menu-hide
+    opacity: 0 !important
 
 .difficulty-name
     cursor: pointer
@@ -28,7 +38,7 @@ button, input[type="submit"], input[type="reset"]
     text-transform: uppercase
 
 .difficulty-name:hover
-    color: #58fdf9
+    color: #89f5fe
     text-shadow: 0 0 8px
 
 .difficulty-disabled

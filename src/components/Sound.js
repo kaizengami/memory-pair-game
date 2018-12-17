@@ -1,11 +1,15 @@
-let snd1  = new Audio();
-let src1  = document.createElement("source");
-src1.type = "audio/mpeg";
-src1.src  = "static/media-files/sound/starting-page.mp3";
-snd1.appendChild(src1);
-
-const Play = () => {
-    snd1.play();
+const Sundtrack = (url, loop = false) => {
+    let audio = new Audio();
+    audio.id = 'soundtrack';
+    audio.src = `static/media-files/sound/${url}`;
+    audio.style.display = 'none'; //added to fix ios issue
+    audio.autoplay = true;
+    audio.loop = false;
+    audio.muted = false;
+    audio.onended = () => {
+      audio.remove(); 
+    };
+    audio.play();
 }
 
-export default Play
+export default Sundtrack;
