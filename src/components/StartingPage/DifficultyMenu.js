@@ -24,6 +24,14 @@ const addClickEvent = () => {
 
 const applyDifficulty = (difficulty) => {
     pageTransitionEffect();
+    const black_screen = document.getElementById('black-screen-in');
+    black_screen.addEventListener('animationend', () => { 
+        document.getElementById('full-screen-video').remove();
+        document.getElementsByClassName('difficulty-menu')[0].remove();
+        document.getElementById('game-options-button').remove(); 
+        document.getElementById('game-options-menu').remove();
+        MainPage();
+    });
     return console.log(difficulty);
 }
 

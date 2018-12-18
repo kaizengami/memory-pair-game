@@ -1,4 +1,5 @@
 import './IntroVideoMenu.sass';
+import Settings from '../Settings';
 
 const introVideoMenuHTML = () => {
     return `<div id="intro-video-menu">
@@ -46,6 +47,9 @@ const buttonSound = () => {
     const button_sound = document.getElementsByClassName('intro-video-menu-box')[0];
     button_sound.classList.toggle('intro-video-menu-box-active');
     const full_screen_video = document.getElementById('full-screen-video');
+    Settings.sound = Settings.sound == true ? false : true;
+    const soundtrack = document.getElementById('soundtrack');
+    soundtrack.muted = !soundtrack.muted;
     if(full_screen_video.muted) full_screen_video.muted = false;
     else full_screen_video.muted = true;
 }
@@ -53,6 +57,7 @@ const buttonSound = () => {
 const buttonScreen = () => {
     const button_sound = document.getElementsByClassName('intro-video-menu-box')[1];
     button_sound.classList.toggle('intro-video-menu-box-active');
+    Settings.fullscreen = Settings.fullscreen == true ? false : true;
     if(!(document.webkitCurrentFullScreenElement==null)) document.webkitCancelFullScreen();
     else document.documentElement.webkitRequestFullScreen();
 }

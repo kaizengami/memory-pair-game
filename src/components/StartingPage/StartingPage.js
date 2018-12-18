@@ -7,7 +7,7 @@ import Sundtrack from '../Sound';
 
 const StartingPage = () => {
   BlackScreen.fromBlack();
-  Sundtrack('starting-page.mp3', true);
+  Sundtrack.play();
   RenderFullScreenVideo('planet.mp4', 'loop');
   RenderDifficultyMenu();
   GameOptions.render();

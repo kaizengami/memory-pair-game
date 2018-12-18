@@ -1,4 +1,5 @@
 import StartingPage from './StartingPage/StartingPage';
+import Settings from './Settings';
 
 const HotKeys = {
     fullscreen : function () {
@@ -6,6 +7,9 @@ const HotKeys = {
             handleEvent: function (e) {
                 if ((e.key=='f'||e.keyCode==70) && (e.target.nodeName=='BODY')) {
                     e.preventDefault();
+                    Settings.fullscreen = Settings.fullscreen == true ? false : true;
+                    const game_options_menu_fullscreen = document.getElementById('game-options-menu-fullscreen')
+                    if(game_options_menu_fullscreen) game_options_menu_fullscreen.checked = !game_options_menu_fullscreen.checked;
                     if(!(document.webkitCurrentFullScreenElement==null)) document.webkitCancelFullScreen();
                     else document.documentElement.webkitRequestFullScreen();
                 }
@@ -18,8 +22,12 @@ const HotKeys = {
                 if ((e.key=='m'||e.keyCode==77) && (e.target.nodeName=='BODY')) {
                     e.preventDefault();
                     const full_screen_video = document.getElementById('full-screen-video');
-                    if(full_screen_video.muted) full_screen_video.muted = false;
-                    else full_screen_video.muted = true;
+                    const soundtrack = document.getElementById('soundtrack');
+                    const game_options_menu_sound = document.getElementById('game-options-menu-sound')
+                    soundtrack.muted = !soundtrack.muted;
+                    Settings.sound = Settings.sound == true ? false : true;
+                    full_screen_video.muted = full_screen_video.muted == true ? false : true;
+                    if(game_options_menu_sound) game_options_menu_sound.checked = !game_options_menu_sound.checked;
                 }
             }
           });
