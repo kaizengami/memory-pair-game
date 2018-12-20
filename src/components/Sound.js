@@ -16,6 +16,10 @@ const Sundtrack = {
     play : function() {
       const audio = document.getElementById('soundtrack');
       audio.load();
+    },
+    change : function(url) {
+      const audio = document.getElementById('soundtrack');
+      audio.src = `static/media-files/sound/${url}`;
     }
 }
 

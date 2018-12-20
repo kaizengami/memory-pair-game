@@ -1,11 +1,12 @@
 import './GameScene.sass';
 
+const container = document.getElementById('container');
+
 const game_scene_html = () => {
-    return `<div id="game-scene">asd</div>`
+    return `<div id="game-scene"></div>`
 }
   
 const Render = () => {
-    const container = document.getElementById('container');
     return container.insertAdjacentHTML('beforeend', game_scene_html());
 }
 
