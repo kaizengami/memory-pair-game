@@ -26,7 +26,7 @@ const HotKeys = {
                     const game_options_menu_sound = document.getElementById('game-options-menu-sound')
                     soundtrack.muted = !soundtrack.muted;
                     Settings.sound = Settings.sound == true ? false : true;
-                    full_screen_video.muted = full_screen_video.muted == true ? false : true;
+                    if(full_screen_video) full_screen_video.muted = full_screen_video.muted == true ? false : true;
                     if(game_options_menu_sound) game_options_menu_sound.checked = !game_options_menu_sound.checked;
                 }
             }
