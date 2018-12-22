@@ -25,7 +25,10 @@ const addClickEvent = () => {
 const applyDifficulty = (difficulty) => {
     pageTransitionEffect();
     const black_screen = document.getElementById('black-screen-in');
+    const full_screen_video = document.getElementById('full-screen-video');
+    full_screen_video.classList.add('full-screen-video-zoom');
     return black_screen.addEventListener('animationend', () => { 
+           full_screen_video.classList.remove('full-screen-video-zoom');
            document.getElementById('full-screen-video').remove();
            document.getElementsByClassName('difficulty-menu')[0].remove();
            document.getElementById('game-options-button').remove(); 
