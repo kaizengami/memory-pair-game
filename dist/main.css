@@ -103,6 +103,130 @@ button, input[type="submit"], input[type="reset"] {
   background-repeat: no-repeat;
   background-size: cover; }
 
+#battleground-stats {
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-family: p5hatty;
+  animation: battleground-stats 1s ease-in 0s 1;
+  transition: opacity .3s ease-out;
+  filter: grayscale(0.9); }
+
+@keyframes battleground-stats {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+.battleground-stats-hide {
+  opacity: 0 !important;
+  pointer-events: none; }
+
+.battleground-stats-image {
+  width: 915px;
+  height: 130px;
+  background-image: url(f3ae64da45d64379dc67ad9afe0d4c57.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center; }
+
+#battleground-board {
+  position: fixed;
+  bottom: calc(100%);
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-family: p5hatty;
+  transition: all 0.5s cubic-bezier(0.7, 0.03, 0.95, 1.17);
+  transition-delay: .3s; }
+
+.battleground-board-show {
+  bottom: 0 !important; }
+
+.battleground-board-rebound {
+  animation: battleground-board-rebound 0.5s ease-in 0s 1; }
+
+@keyframes battleground-board-rebound {
+  0% {
+    bottom: 0;
+    animation-timing-function: ease-out; }
+  17% {
+    bottom: 20px;
+    animation-timing-function: ease-in; }
+  34% {
+    bottom: 0;
+    animation-timing-function: ease-out; }
+  51% {
+    bottom: 7px;
+    animation-timing-function: ease-in; }
+  68% {
+    bottom: 0px; }
+  85% {
+    bottom: 2px;
+    animation-timing-function: ease-in; }
+  100% {
+    bottom: 0; } }
+
+.battleground-board-image {
+  width: 1380px;
+  height: 691px;
+  background-image: url(17abc6e82bd2a6f148588d19b3797999.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center; }
+
+.battleground-board-field {
+  width: calc(100% - 300px);
+  margin-left: 150px;
+  height: 450px;
+  background-color: #758a9973;
+  transform: perspective(19px) rotateX(1deg); }
+
+.card {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  perspective: 1500px;
+  perspective-origin: top;
+  cursor: pointer; }
+
+.card-content {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  transition: transform 0.5s;
+  transform-style: preserve-3d; }
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url(static/images/card-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  box-shadow: inset 0px 0px 50px 0px rgba(49, 32, 1, 0.85); }
+
+.card:hover .card-content {
+  transform: rotateY(180deg);
+  transition: transform 0.5s; }
+
+.card-front, .card-back {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  line-height: 300px;
+  color: #03446A;
+  text-align: center;
+  font-size: 60px;
+  border-radius: 5px;
+  backface-visibility: hidden; }
+
+.card-back {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  transform: rotateY(180deg); }
+
 #dialog {
   position: fixed;
   width: 1560px;
@@ -140,7 +264,7 @@ button, input[type="submit"], input[type="reset"] {
   width: 431px;
   height: 460px;
   bottom: 0;
-  background-image: url(b11658d4534cd7e26c1ffc2e32052db1.png);
+  background-image: url(53202afaa0776f2774308e972ecbe68b.png);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: bottom left; }
@@ -204,7 +328,7 @@ button, input[type="submit"], input[type="reset"] {
     background: #ffffff1c;
     color: #ffffffa8; }
   50% {
-    background: #ffffff30;
+    background: #ffffff47;
     color: #ffffff; }
   100% {
     background: #ffffff1c;
@@ -357,7 +481,11 @@ input[type="checkbox"]:disabled:after {
   bottom: 0;
   min-width: 100%;
   min-height: 100%;
-  pointer-events: none; }
+  pointer-events: none;
+  transition: transform 1.2s cubic-bezier(1, 0.01, 0.47, 0.88); }
+
+.full-screen-video-zoom {
+  transform: scale(12) !important; }
 
 button, input[type="submit"], input[type="reset"] {
   background: none;
