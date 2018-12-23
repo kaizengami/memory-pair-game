@@ -1,5 +1,7 @@
 # Memory – Pair Game
 
+## [Demo](https://kurosavaakira.github.io/memory-pair-game/dist/) 
+
 ## Project Setup
 
 1. Install dependencies: `npm install`
