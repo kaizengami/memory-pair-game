@@ -1,7 +1,5 @@
 .card
     position: absolute
-    width: 100px
-    height: 100px
     perspective: 1500px
     perspective-origin: top
     cursor: pointer
@@ -23,9 +21,14 @@
     background-position: center center
     box-shadow: inset 0px 0px 50px 0px rgba(49, 32, 1, 0.85)
 
-.card:hover .card-content
-    transform: rotateY( 180deg )
-    transition: transform 0.5s
+.card-content-show
+    pointer-events: none !important
+    transform: rotateY( 180deg ) !important
+    transition: transform 0.5s !important
+
+.card-content-correct
+    pointer-events: none !important
+    filter: grayscale(0.9)
 
 .card-front, .card-back 
     position: absolute

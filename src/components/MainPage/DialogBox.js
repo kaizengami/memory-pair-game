@@ -9,7 +9,7 @@ const dialog_box = (dialog_box_avatar_name, dialog_box_text) => {
 }
   
 const dialog_box_avatar = (avatar) => {
-    return `<div class="dialog-box-avatar" style="background-image: url(../../../static/images/${avatar})"></div>`;
+    return `<div class="dialog-box-avatar" style="background-image: url(static/images/${avatar})"></div>`;
 }
 
 const dialog_box_avatar_name = (name) => {

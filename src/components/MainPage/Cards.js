@@ -4,7 +4,7 @@ import CardImages from './CardImages';
 const number_of_cards = 12;
 
 let cards = [];
-let cards_img = [];
+let cards_img_final = [];
 
 class Card {
   constructor(x, y, image) {
@@ -25,20 +25,20 @@ class Card {
   }
 }
 
-const shuffleCards = (cards) => {
+const shuffleCardsImg = (cards) => {
     return cards.sort( () => Math.random() - 0.5) ;
 }
 //Сut off half of the cards to create a duplicate of each card
-const cutHalfCards = () => { 
+const cutHalfCardsImg = () => { 
     return CardImages.slice(0, number_of_cards / 2);
 }
 
-const cloneCards = () => {
-    let gameCards = cutHalfCards();
+const cloneCardsImg = () => {
+    let gameCards = cutHalfCardsImg();
     for (let i = gameCards.length - 1; i >= 0; i--){
       gameCards.push(gameCards[i]);
     }
-    return cards_img = gameCards;
+    return cards_img_final = gameCards;
 }
 
 const generateCards = () => {
@@ -48,18 +48,17 @@ const generateCards = () => {
     if (i === 6) x = 75;
     if (i >= 6) y = 210;
     x += 120;
-    cards.push(new Card(x, y, CardImages[i + 1]));
+    cards.push(new Card(x, y, cards_img_final[i]));
   }
 }
 
 const generateCardsHtml = () => {
   let html_string = '';
   for (let i = 0; i < number_of_cards; i++) {
-    console.log(cards[i].id);
-    html_string += `<div class="card">
-                      <div class="card-content" id="${cards[i].id}" style="margin-left: ${cards[i].x}px; margin-top: ${cards[i].y}px">
+    html_string += `<div class="card" id="${cards[i].id}">
+                      <div class="card-content" style="margin-left: ${cards[i].x}px; margin-top: ${cards[i].y}px">
                         <div class="card-front"></div>
-                        <div class="card-back" style="background-image: url(../../../static/images/card-images/${cards[i].image})"></div>
+                        <div class="card-back" style="background-image: url(static/images/card-images/${cards[i].image})"></div>
                       </div>
                     </div>`;
   }
@@ -67,14 +66,13 @@ const generateCardsHtml = () => {
 }
 
 const render = () => {
-    console.log( 'shuffleCards(CardImages): ', shuffleCards(CardImages));
-    console.log( 'cutHalfCards: ', cutHalfCards());
-    console.log( 'cloneCards:', cloneCards());
-    console.log('cards_img:', cards_img);
-    console.log( 'shuffleCards(cards_img): ',  shuffleCards(cards_img));
+    shuffleCardsImg(CardImages);
+    cutHalfCardsImg();
+    cloneCardsImg();
+    shuffleCardsImg(cards_img_final);
     generateCards();
     console.log(cards);
     return generateCardsHtml();
 }
 
-export default render;
+export { render as cards, cards as cards_data };

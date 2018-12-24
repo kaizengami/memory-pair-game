@@ -1,5 +1,5 @@
 import './BattlegroundBoard.sass';
-import Cards from './Cards';
+import { cards } from './Cards';
 
 const container = document.getElementById('container');
 
@@ -12,7 +12,7 @@ const board_image = () => {
 }
 
 const board_field = () => {
-    return `<div class="battleground-board-field">${Cards()}</div>`;
+    return `<div class="battleground-board-field">${cards()}</div>`;
 }
 
 const Render = () => {
