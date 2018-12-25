@@ -17,12 +17,6 @@ class Card {
   static id() {
     return cards.length + 1;
   }
-
-  show(card) {
-    let id = card.target.parentNode.parentNode.id;
-    card.target.parentNode.classList.add('card-visible');
-    cards[id].visible = true;
-  }
 }
 
 const shuffleCardsImg = (cards) => {
@@ -71,7 +65,6 @@ const render = () => {
     cloneCardsImg();
     shuffleCardsImg(cards_img_final);
     generateCards();
-    console.log(cards);
     return generateCardsHtml();
 }
 

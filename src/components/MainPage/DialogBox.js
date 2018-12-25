@@ -1,4 +1,5 @@
 import './DialogBox.sass';
+import Countdown from './Countdown';
 
 const dialog = (avatar, dialog_box, button_ok) => {
     return `<div id="dialog">${avatar}${dialog_box}${button_ok}</div>`;
@@ -31,14 +32,17 @@ const addButtonClickEvent = () => {
 
 const applyButton = () => {
     const dialog = document.getElementById('dialog');
-    const battleground_board = document.getElementById('battleground-board');
-    battleground_board.classList.add('battleground-board-show');
-        battleground_board.addEventListener('transitionend', () => { 
-            battleground_board.classList.add('battleground-board-rebound')
-    });
+    const battleground_board = document.getElementById('battleground-board'); 
     dialog.classList.add('dialog-hide');
     dialog.addEventListener('transitionend', () => { 
         dialog.remove();
+        Countdown();
+        setTimeout(() => {
+            battleground_board.classList.add('battleground-board-show');
+            battleground_board.addEventListener('transitionend', () => { 
+                battleground_board.classList.add('battleground-board-rebound');
+            });
+        }, 3000);
     });
 }
 

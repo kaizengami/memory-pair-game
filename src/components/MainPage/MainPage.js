@@ -5,7 +5,6 @@ import RenderGameScene from './GameScene';
 import RenderBattlegroundStats from './BattlegroundStats';
 import RenderBattlegroundBoard from './BattlegroundBoard';
 import RenderDialogBox from './DialogBox';
-import ApplyGameLogic from './GameLogic';
 
 const MainPage = () => {
     BlackScreen.fromBlack();
@@ -15,7 +14,6 @@ const MainPage = () => {
     RenderBattlegroundBoard();
     const dialog_text = "Hey, sergeant! You are in the alpha version of the game,<br>so you can't save a princess or lost your life.<br>She will wait for you in next update.";
     RenderDialogBox('captain-sad.png', 'capitan', dialog_text);
-    ApplyGameLogic();
 };
 
 export default MainPage;

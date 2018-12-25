@@ -8,6 +8,8 @@
     position: absolute
     width: 100px
     height: 100px
+    border-radius: 5px
+    box-shadow: 0 0 8px rgba(0, 0, 0, 1)
     transition: transform 0.5s
     transform-style: preserve-3d
 
@@ -28,7 +30,12 @@
 
 .card-content-correct
     pointer-events: none !important
-    filter: grayscale(0.9)
+    margin-top: 340px !important
+    transition: all 0.5s !important
+
+.card-content-correct-grayscale
+    filter: grayscale(0.6) !important
+    transition: all 0.3s 
 
 .card-front, .card-back 
     position: absolute

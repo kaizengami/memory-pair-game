@@ -4,7 +4,7 @@ import { cards } from './Cards';
 const container = document.getElementById('container');
 
 const board = () => {
-    return `<div id="battleground-board">${board_image()}</div>`;
+    return `<div id="battleground-board" class="battleground-board-disable">${board_image()}</div>`;
 }
 
 const board_image = () => {

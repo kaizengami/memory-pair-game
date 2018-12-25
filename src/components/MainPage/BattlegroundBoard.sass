@@ -7,6 +7,9 @@
     transition: all .5s cubic-bezier(.7,.03,.95,1.17) 
     transition-delay: .3s;
 
+.battleground-board-disable
+    pointer-events: none !important
+
 .battleground-board-show
     bottom: 0 !important
 
@@ -46,7 +49,6 @@
     width: calc(100% - 300px)
     margin-left: 150px
     height: 450px
-    background-color: #758a9973
     transform: perspective(19px) rotateX(1deg)
 
 @media (max-height: 768px) 
