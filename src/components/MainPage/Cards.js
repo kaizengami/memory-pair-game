@@ -46,6 +46,10 @@ const generateCards = () => {
   }
 }
 
+const resetCardsForNextGame = () => {
+  return cards = [];
+}
+
 const generateCardsHtml = () => {
   let html_string = '';
   for (let i = 0; i < number_of_cards; i++) {
@@ -68,4 +72,4 @@ const render = () => {
     return generateCardsHtml();
 }
 
-export { render as cards, cards as cards_data };
+export { render as cards, cards as cards_data, resetCardsForNextGame as resetCards };

@@ -1,4 +1,4 @@
-import { cards_data } from './Cards';
+import { cards_data, resetCards } from './Cards';
 import ScorePage from '../ScorePage/ScorePage';
 
 const margin_left = 50;
@@ -42,10 +42,12 @@ const correctPair = () => {
     const card_1 = document.getElementById(pair[0].id);
     const card_2 = document.getElementById(pair[1].id);
     number_of_pairs += 1;
-    console.log(number_of_pairs);
     pair = [];
     setTimeout(() => {
-        if (number_of_pairs == 6) showScorePage();
+        if (number_of_pairs == 6) {
+            resetGameVariables();
+            showScorePage();
+        } 
         card_1.children[0].classList.add('card-content-correct');
         card_2.children[0].classList.add('card-content-correct');
         card_1.children[0].classList.remove('card-content-show');
@@ -83,6 +85,14 @@ const showHideCards = () => {
 
 const showScorePage = () => {
     setTimeout(() => { ScorePage('Well done!'); }, 500);
+}
+
+const resetGameVariables = () => {
+    resetCards();
+    console.log(cards_data);
+    pair = [];
+    number_of_pairs = 0;
+    card_z_index = 2;
 }
 
 const ApplyGameLogic = () => {

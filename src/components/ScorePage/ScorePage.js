@@ -1,20 +1,11 @@
-import './ScorePage.sass';
+import Sundtrack from '../Sound';
+import CongratulationSlide from './CongratulationSlide';
+import ScoreTable from './ScoreTable';
 
-const container = document.getElementById('container');
+const ScorePage = (slide_text) => {
+    Sundtrack.change('score-page.mp3');
+    CongratulationSlide(slide_text);
+    ScoreTable();
+};
 
-const scorePage = (congratulation) => {
-    return `<div id="score-page">
-                <div class="score-page-congratulation">${congratulation}</div>
-            </div>`;
-}
-
-const render = (congratulation) => {
-    container.insertAdjacentHTML('beforeend', scorePage(congratulation));
-    const score_page = document.getElementById('score-page');
-    score_page.addEventListener('animationend', () => { 
-        score_page.classList.add('score-page-rebound');
-    });
-
-}
-
-export default render;
+export default ScorePage;
