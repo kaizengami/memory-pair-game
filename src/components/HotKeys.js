@@ -37,12 +37,10 @@ const HotKeys = {
             handleEvent: function (e) {
                 if ((e.key=='Escape'||e.key=='Esc'||e.keyCode==27) && (e.target.nodeName=='BODY')) {
                     e.preventDefault();
-                    const full_screen_video = document.getElementById('full-screen-video');
                     const intro_video_menu = document.getElementById('intro-video-menu');
                     const intro_video_menu_skip = document.getElementById('intro-video-menu-skip');
                     //check if intro video ended
                     if(typeof(intro_video_menu) != 'undefined' && intro_video_menu != null) {
-                        full_screen_video.remove();
                         intro_video_menu.remove();
                         intro_video_menu_skip.remove() 
                         StartingPage();

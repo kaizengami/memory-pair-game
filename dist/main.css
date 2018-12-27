@@ -6,6 +6,9 @@
   font-family: "p5hatty";
   src: url(13fd6f34b3848138f7e28ac358b3a0ce.ttf); }
 
+* {
+  user-select: none; }
+
 body, html {
   height: 100%;
   background-color: #000000;
@@ -14,6 +17,16 @@ body, html {
 
 #container {
   height: 100%; }
+
+#device-not-supported {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 60px;
+  font-family: p5hatty;
+  color: #2dd1ff;
+  text-shadow: #2dd1ff 0px 0px 2px, #2dd1ff 0px 0px 4px; }
 
 button, input[type="submit"], input[type="reset"] {
   background: none;
@@ -425,7 +438,7 @@ button, input[type="submit"], input[type="reset"] {
   color: #ffffff;
   text-shadow: #FFF 0px 0px 2px, #FFF 0px 0px 5px, #FFF 0px 0px 6px, #FF2D95 0px 0px 7px, #FF2D95 0px 0px 8px, #FF2D95 0px 0px 9px, #FF2D95 0px 0px 10px, #FF2D95 0px 0px 15px;
   animation-name: score-page-congratulation;
-  animation-duration: 1.5s;
+  animation-duration: .5s;
   animation-delay: .8s;
   animation-iteration-count: 1;
   animation-timing-function: step-end;
@@ -455,10 +468,10 @@ button, input[type="submit"], input[type="reset"] {
   height: 100%;
   left: 50%;
   transform: translate(-50%, 0);
-  background-color: #0b1b29e3;
+  background-color: #0b1b29ed;
   opacity: 0;
   transition: all 1s cubic-bezier(0.7, 0.03, 0.95, 1.17);
-  transition-delay: 1s; }
+  transition-delay: .8s; }
 
 .score-table-visible {
   opacity: 1 !important; }

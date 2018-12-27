@@ -89,7 +89,6 @@ const showScorePage = () => {
 
 const resetGameVariables = () => {
     resetCards();
-    console.log(cards_data);
     pair = [];
     number_of_pairs = 0;
     card_z_index = 2;

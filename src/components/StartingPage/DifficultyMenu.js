@@ -29,7 +29,7 @@ const applyDifficulty = (difficulty) => {
     full_screen_video.classList.add('full-screen-video-zoom');
     return black_screen.addEventListener('animationend', () => { 
            full_screen_video.classList.remove('full-screen-video-zoom');
-           document.getElementById('full-screen-video').remove();
+           document.getElementById('full-screen-video').pause();
            document.getElementsByClassName('difficulty-menu')[0].remove();
            document.getElementById('game-options-button').remove(); 
            document.getElementById('game-options-menu').remove();

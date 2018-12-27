@@ -1,6 +1,6 @@
 import './ScoreTable.sass';
 import BlackScreen from '../PageTransition/BlackScreenTransition';
-import RenderFullScreenVideo from '../FullScreenVideo/FullScreenVideo';
+import { changeFullScreenVideo } from '../FullScreenVideo/FullScreenVideo';
 import Sundtrack from '../Sound';
 import StartingPage from '../StartingPage/StartingPage';
 
@@ -19,12 +19,13 @@ const addPlayAgainEvent = () => {
 const restartGame = () => {
     BlackScreen.toBlack();
     const black_screen = document.getElementById('black-screen-in');
+    const soundtrack = document.getElementById('soundtrack');
     black_screen.addEventListener('animationend', () => { 
-        RenderFullScreenVideo('kottans-end.mp4');
+        cleanDom();
+        soundtrack.pause();
+        changeFullScreenVideo('kottans-end.mp4');
         const full_screen_video = document.getElementById('full-screen-video');
         full_screen_video.onended = function(e) {
-            full_screen_video.remove();
-            cleanDom();
             StartingPage();
             Sundtrack.change('starting-page.mp3');
         }

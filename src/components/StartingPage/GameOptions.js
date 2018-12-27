@@ -64,7 +64,9 @@ const GameOptions = {
     checkboxSound : function() {
         Settings.sound = Settings.sound == true ? false : true;
         const soundtrack = document.getElementById('soundtrack');
+        const full_screen_video = document.getElementById('full-screen-video');
         soundtrack.muted = !soundtrack.muted;
+        full_screen_video.muted = !full_screen_video.muted;
     },
     checkboxFullscreen : function() {
         Settings.fullscreen = Settings.fullscreen == true ? false : true;
