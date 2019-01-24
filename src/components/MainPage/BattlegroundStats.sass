@@ -5,13 +5,17 @@
     font-family: p5hatty
     animation: battleground-stats 1s ease-in 0s 1
     transition: opacity .3s ease-out
-    filter: grayscale(0.9)
 
 @keyframes battleground-stats
     0%
         opacity: 0
     100%
         opacity: 1
+
+@media (max-height: 768px) 
+    #battleground-stats
+        transform: scale(0.7)
+        transform-origin: -117% 0%
 
 .battleground-stats-hide
     opacity: 0 !important
@@ -24,3 +28,34 @@
     background-repeat: no-repeat
     background-size: contain
     background-position: center center   
+
+.battleground-stats-airi, .battleground-stats-player 
+    position: absolute
+    width: 195px
+    height: 16px
+    margin-left: 175px
+    margin-top: 42px
+    border: 0px solid black
+    //filter: grayscale(0.9)
+
+.battleground-stats-player 
+    margin-left: 550px
+    transform: rotateY(180deg)
+
+\:root 
+    --stats-airi-health: 100%
+    --stats-player-health: 101%
+
+.battleground-stats-airi:after, .battleground-stats-player:after
+    content: '\A'
+    position: absolute
+    background: #fb4343d1
+    box-shadow: 0px 0px 37px 3px rgba(251,67,67,0.9)
+    top: 0
+    bottom: 0
+    left: 0;
+    width: var(--stats-airi-health)
+    transition: width .2s ease
+
+.battleground-stats-player:after
+    width: var(--stats-player-health)

@@ -16,6 +16,7 @@ body, html {
   margin: 0; }
 
 #container {
+  position: relative;
   height: 100%; }
 
 #device-not-supported {
@@ -122,14 +123,18 @@ button, input[type="submit"], input[type="reset"] {
   transform: translate(-50%, 0);
   font-family: p5hatty;
   animation: battleground-stats 1s ease-in 0s 1;
-  transition: opacity .3s ease-out;
-  filter: grayscale(0.9); }
+  transition: opacity .3s ease-out; }
 
 @keyframes battleground-stats {
   0% {
     opacity: 0; }
   100% {
     opacity: 1; } }
+
+@media (max-height: 768px) {
+  #battleground-stats {
+    transform: scale(0.7);
+    transform-origin: -117% 0%; } }
 
 .battleground-stats-hide {
   opacity: 0 !important;
@@ -142,6 +147,36 @@ button, input[type="submit"], input[type="reset"] {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center; }
+
+.battleground-stats-airi, .battleground-stats-player {
+  position: absolute;
+  width: 195px;
+  height: 16px;
+  margin-left: 175px;
+  margin-top: 42px;
+  border: 0px solid black; }
+
+.battleground-stats-player {
+  margin-left: 550px;
+  transform: rotateY(180deg); }
+
+:root {
+  --stats-airi-health: 100%;
+  --stats-player-health: 101%; }
+
+.battleground-stats-airi:after, .battleground-stats-player:after {
+  content: '\A';
+  position: absolute;
+  background: #fb4343d1;
+  box-shadow: 0px 0px 37px 3px rgba(251, 67, 67, 0.9);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: var(--stats-airi-health);
+  transition: width .2s ease; }
+
+.battleground-stats-player:after {
+  width: var(--stats-player-health); }
 
 #battleground-board {
   position: fixed;
@@ -183,6 +218,7 @@ button, input[type="submit"], input[type="reset"] {
     bottom: 0; } }
 
 .battleground-board-image {
+  position: relative;
   width: 1380px;
   height: 691px;
   background-image: url(17abc6e82bd2a6f148588d19b3797999.png);
@@ -191,6 +227,7 @@ button, input[type="submit"], input[type="reset"] {
   background-position: center center; }
 
 .battleground-board-field {
+  position: relative;
   width: calc(100% - 300px);
   margin-left: 150px;
   height: 450px;
@@ -470,11 +507,13 @@ button, input[type="submit"], input[type="reset"] {
   transform: translate(-50%, 0);
   background-color: #0b1b29ed;
   opacity: 0;
+  pointer-events: none;
   transition: all 1s cubic-bezier(0.7, 0.03, 0.95, 1.17);
   transition-delay: .8s; }
 
 .score-table-visible {
-  opacity: 1 !important; }
+  opacity: 1 !important;
+  pointer-events: all !important; }
 
 .scores {
   position: absolute;

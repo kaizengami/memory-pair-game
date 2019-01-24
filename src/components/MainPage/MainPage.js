@@ -2,7 +2,7 @@
 import blackScreen from '../PageTransition/BlackScreenTransition';
 import sundtrack from '../Sound';
 import renderGameScene from './GameScene';
-import renderBattlegroundStats from './BattlegroundStats';
+import { renderBattlegroundStats } from './BattlegroundStats';
 import renderBattlegroundBoard from './BattlegroundBoard';
 import renderDialogBox from './DialogBox';
 

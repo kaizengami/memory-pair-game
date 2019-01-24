@@ -1,4 +1,5 @@
 import { cardsData, resetCards } from './Cards';
+import { updateStats } from './BattlegroundStats';
 import scorePage from '../ScorePage/ScorePage';
 
 const MARGIN_LEFT = 50;
@@ -18,7 +19,7 @@ const addClickEventToCards = () => {
 }
 
 const cardClick = (card) => {
-    card.children[0].classList.add('card-content-show');
+    card.firstElementChild.classList.add('card-content-show');
     pair.push({
         id : card.attributes.id.value, 
         img : cardsData[card.attributes.id.value - 1].image
@@ -28,8 +29,19 @@ const cardClick = (card) => {
 
 const checkPair = () => {
     if (pair[1] == null) return
-    else if (pair[0].img !== pair[1].img) hidePair();
+    else if (pair[0].img !== pair[1].img) {
+        hidePair();
+        updateStats(airiDamage());
+    }
     else if (pair[0].img === pair[1].img) correctPair();
+}
+
+const airiDamage = () => {
+    return true;
+}
+
+const airiPlayer = () => {
+    return true;
 }
 
 const hidePair = () => {
@@ -37,8 +49,8 @@ const hidePair = () => {
     const card_2 = document.getElementById(pair[1].id);
     pair = [];
     setTimeout(() => {
-        card_1.children[0].classList.remove('card-content-show');
-        card_2.children[0].classList.remove('card-content-show');
+        card_1.firstElementChild.classList.remove('card-content-show');
+        card_2.firstElementChild.classList.remove('card-content-show');
     }, 500);    
 }
 
@@ -52,24 +64,25 @@ const correctPair = () => {
             resetGameVariables();
             showScorePage();
         } 
-        card_1.children[0].classList.add('card-content-correct');
-        card_2.children[0].classList.add('card-content-correct');
-        card_1.children[0].classList.remove('card-content-show');
-        card_2.children[0].classList.remove('card-content-show');
-        card_1.children[0].addEventListener('transitionend', () => { 
-            card_1.children[0].classList.add('card-content-correct-grayscale');
-            card_2.children[0].classList.add('card-content-correct-grayscale');
+        card_1.firstElementChild.classList.add('card-content-correct');
+        card_2.firstElementChild.classList.add('card-content-correct');
+        card_1.firstElementChild.classList.remove('card-content-show');
+        card_2.firstElementChild.classList.remove('card-content-show');
+        card_1.firstElementChild.addEventListener('transitionend', () => { 
+            card_1.firstElementChild.classList.add('card-content-correct-grayscale');
+            card_2.firstElementChild.classList.add('card-content-correct-grayscale');
         });
         //hideCorrectPair(card_1, card_2);
     }, 500);    
 }
 
 const hideCorrectPair = (card_1, card_2) => {
-    //z-index style is not working :(
-    card_1.children[0].style.zIndex = `${cardZindex++}`;
-    card_1.children[0].style.marginLeft = `${MARGIN_LEFT + cardZindex * 10}px`;
-    card_2.children[0].style.zIndex = `${cardZindex++}`;
-    card_2.children[0].style.marginLeft = `${MARGIN_LEFT + cardZindex * 10}px`;
+    //z-index style is not working
+    card_1.firstElementChild.style.zIndex = `${cardZindex++}`;
+    card_1.firstElementChild.style.marginLeft = `${MARGIN_LEFT + cardZindex * 10}px`;
+    
+    card_2.firstElementChild.style.zIndex = `${cardZindex++}`;
+    card_2.firstElementChild.style.marginLeft = `${MARGIN_LEFT + cardZindex * 10}px`;
 }
 
 const showHideCards = () => {

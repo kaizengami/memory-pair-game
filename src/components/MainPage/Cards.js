@@ -36,6 +36,16 @@ const cloneCardsImg = () => {
 }
 
 const generateCards = () => {
+// Starting position begins at the left top corner.
+// Each new items is generated from left to right. 
+// After every 6 items, there will be a new line.
+//
+//  y
+//  ↑
+//  ╎ (0:0)
+//  ╎  ▯▯▯▯▯▯ 
+//  ╎  ▯▯▯▯▯▯
+//  -----------→x 
   let x = 75;
   let y = 90;
   for (let i = 0; i < NUMBER_OF_CARDS; i++) {
