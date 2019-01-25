@@ -1,5 +1,5 @@
 import { cardsData, resetCards } from './Cards';
-import { updateStats } from './BattlegroundStats';
+import { updateStats, checkStats, resetStats } from './BattlegroundStats';
 import scorePage from '../ScorePage/ScorePage';
 
 const MARGIN_LEFT = 50;
@@ -32,6 +32,7 @@ const checkPair = () => {
     else if (pair[0].img !== pair[1].img) {
         hidePair();
         updateStats(airiDamage());
+        if (checkStats() === 'dead') gameOver('defeat');
     }
     else if (pair[0].img === pair[1].img) correctPair();
 }
@@ -40,7 +41,7 @@ const airiDamage = () => {
     return true;
 }
 
-const airiPlayer = () => {
+const playerDamage = () => {
     return true;
 }
 
@@ -61,8 +62,7 @@ const correctPair = () => {
     pair = [];
     setTimeout(() => {
         if (numberOfPairs == 6) {
-            resetGameVariables();
-            showScorePage();
+            gameOver('victory');
         } 
         card_1.firstElementChild.classList.add('card-content-correct');
         card_2.firstElementChild.classList.add('card-content-correct');
@@ -74,6 +74,16 @@ const correctPair = () => {
         });
         //hideCorrectPair(card_1, card_2);
     }, 500);    
+}
+
+const gameOver = (result) => {
+    switch (result) {
+        case 'victory': showScorePage('victory');
+            break;
+        case 'defeat': showScorePage('defeat');
+            break;
+    }
+    resetGameVariables();
 }
 
 const hideCorrectPair = (card_1, card_2) => {
@@ -100,12 +110,13 @@ const showHideCards = () => {
     }, 2000);
 }
 
-const showScorePage = () => {
-    setTimeout(() => { scorePage('Well done!'); }, 500);
+const showScorePage = (text) => {
+    setTimeout(() => { scorePage(text); }, 500);
 }
 
 const resetGameVariables = () => {
     resetCards();
+    resetStats();
     pair = [];
     numberOfPairs = 0;
     cardZindex = 2;

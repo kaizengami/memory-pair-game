@@ -2,7 +2,7 @@ import './BattlegroundStats.sass';
 
 let health = {
     airi : 100,
-    you : 102
+    you : 101
 }
 
 const container = document.getElementById('container');
@@ -35,8 +35,17 @@ const airiReduceLife = () => {
     statsAiri.style.setProperty('--stats-airi-health', health.airi + '%');
 }
 
+const checkStats = () => {
+    if (health.airi === 0 || health.player === 0) return 'dead';
+}
+
+const resetStats = () => {
+    health.airi = 100;
+    health.player = 101;
+}
+
 const render = () => {
     container.insertAdjacentHTML('beforeend', stats());
 }
 
-export { render as renderBattlegroundStats, updateStats };
+export { render as renderBattlegroundStats, updateStats, resetStats, checkStats };

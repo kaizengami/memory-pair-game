@@ -4,10 +4,15 @@
     height: 100%
     left: 50%
     transform: translate(-50%, 0)
-    background-image: linear-gradient(to right top, #99457c, #aa4876, #b84d6f, #c45467, #cd5e5e)
     transition: all .5s cubic-bezier(.7,.03,.95,1.17) 
     transition-delay: .3s;
     animation: score-page-show 0.5s ease-in 0s 1
+
+.score-page-victory
+    background-image: linear-gradient(to right top, #99457c, #aa4876, #b84d6f, #c45467, #cd5e5e)
+
+.score-page-defeat
+    background-image: linear-gradient(to right top, #2d3041, #32374d, #373e58, #3c4565, #414c71)
 
 .score-page-rebound
     animation: score-page-rebound 0.5s ease-in 0s 1 !important
