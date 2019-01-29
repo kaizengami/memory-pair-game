@@ -77,13 +77,25 @@ const correctPair = () => {
 }
 
 const gameOver = (result) => {
+    const battlegroundBoard = document.querySelector('#battleground-board');
     switch (result) {
-        case 'victory': showScorePage('victory');
+        case 'victory': victory();
             break;
-        case 'defeat': showScorePage('defeat');
+        case 'defeat': defeat();
             break;
     }
+    battlegroundBoard.classList.add('battleground-board-disable');
     resetGameVariables();
+}
+
+const victory = () => {
+    showScorePage('victory');
+}
+
+const defeat = () => {
+    setTimeout(() => {
+        showScorePage('defeat');
+    }, 3000);
 }
 
 const hideCorrectPair = (card_1, card_2) => {

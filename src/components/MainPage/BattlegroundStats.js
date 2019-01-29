@@ -1,4 +1,5 @@
 import './BattlegroundStats.sass';
+import { cageDown } from './Cage';
 
 let health = {
     airi : 100,
@@ -33,6 +34,7 @@ const airiReduceLife = () => {
     const statsAiri = document.querySelector('.battleground-stats-airi');
     health.airi = health.airi - 20;
     statsAiri.style.setProperty('--stats-airi-health', health.airi + '%');
+    cageDown();
 }
 
 const checkStats = () => {

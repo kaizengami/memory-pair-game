@@ -1,5 +1,6 @@
 import './DialogBox.sass';
 import countdown from './Countdown';
+import { showCage } from './Cage';
 
 const dialog = (avatar, dialogBox, buttonOk) => {
     return `<div id="dialog">${avatar}${dialogBox}${buttonOk}</div>`;
@@ -36,6 +37,7 @@ const applyButton = () => {
     dialog.classList.add('dialog-hide');
     dialog.addEventListener('transitionend', () => { 
         dialog.remove();
+        showCage();
         countdown();
         setTimeout(() => {
             battlegroundBoard.classList.add('battleground-board-show');
