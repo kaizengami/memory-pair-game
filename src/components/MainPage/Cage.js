@@ -1,4 +1,5 @@
 import './Cage.sass';
+import { showBlood } from './Blood';
 
 const CAGE_LIFE = 220;
 const BROKEN_CHAIN = 90;
@@ -27,8 +28,25 @@ const cageDown = () => {
     cage.style.setProperty('--cage-margin-top', marginTop + damage + 'px');
 }
 
-const breakChain = () => {
+const cageGameOver = () => {
+    lowerDownMax();
+    breakChain();
+}
 
+const lowerDownMax = () => {
+    const cage = document.querySelector('#cage');
+    cage.style.setProperty('--cage-margin-top', 0);
+}
+
+const breakChain = () => {
+    const cage = document.querySelector('#cage');
+    const cageAiri = document.querySelector('.cage-airi');
+    cage.addEventListener('transitionend', () => { 
+        cageAiri.classList.add('cage-airi-game-over');
+        cageAiri.addEventListener('transitionend', () => { 
+            showBlood();
+        });        
+    });
 }
 
 const render = () => {
@@ -36,4 +54,4 @@ const render = () => {
     container.insertAdjacentHTML('beforeend', cage());    
 }
 
-export { render as renderCage, showCage, cageDown };
+export { render as renderCage, showCage, cageDown, cageGameOver };

@@ -37,6 +37,7 @@ const cleanDom = () => {
     document.getElementById('cage').remove();
     document.getElementById('battleground-stats').remove();
     document.getElementById('battleground-board').remove(); 
+    document.getElementById('blood').remove();
     document.getElementById('score-page').remove();
 }
 

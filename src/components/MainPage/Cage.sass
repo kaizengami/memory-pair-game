@@ -2,7 +2,8 @@
     position: fixed
     top: 0
     left: 80px
-    height: 470px
+    width: 200px
+    height: 100%
     margin-top: var(--cage-margin-top)
     pointer-events: none
     transition: margin-top 1s ease-in
@@ -17,10 +18,10 @@
         transform: rotate(-3deg)
         transform-origin: 80px 0
     50% 
-        transform: rotate(3deg)
+        transform: rotate(1deg)
         transform-origin: 80px 0
     50% 
-        transform: rotate(3deg)
+        transform: rotate(1deg)
         transform-origin: 80px 0
     100%
         transform: rotate(-3deg)
@@ -32,19 +33,26 @@
     background-size: contain
     background-position: center center  
 
-.cage-airi
-    bottom: 0
-    width: 200px
-    height: 373px
-    background-image: url("../../../static/images/cage.png")
-
 .cage-broken-chain
     top: 0
     width: 200px
     height: 102px
     background-image: url("../../../static/images/chain.png")
 
-@media (max-height: 768px) 
-    .cage-airi, .cage-broken-chain
-        transform: scale(0.7)
-        transform-origin: 0 30%
+.cage-airi
+    top: 0
+    margin-top: 102px
+    width: 200px
+    height: 373px
+    background-image: url("../../../static/images/cage.png")
+    transition: margin-top 1s ease-in
+
+.cage-airi-game-over
+    margin-top: 500% !important
+
+// @media (max-height: 768px) 
+//     .cage-airi, .cage-broken-chain
+//         transform: scale(0.7)
+//         transform-origin: 0 0px
+        
+

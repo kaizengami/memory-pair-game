@@ -1,5 +1,6 @@
 import { cardsData, resetCards } from './Cards';
 import { updateStats, checkStats, resetStats } from './BattlegroundStats';
+import { cageGameOver } from './Cage';
 import scorePage from '../ScorePage/ScorePage';
 
 const MARGIN_LEFT = 50;
@@ -93,6 +94,7 @@ const victory = () => {
 }
 
 const defeat = () => {
+    cageGameOver();
     setTimeout(() => {
         showScorePage('defeat');
     }, 3000);
