@@ -2,6 +2,7 @@ import { cardsData, resetCards } from './Cards';
 import { updateStats, checkStats, resetStats } from './BattlegroundStats';
 import { cageGameOver } from './Cage';
 import scorePage from '../ScorePage/ScorePage';
+import sundtrack from '../Sound';
 
 const MARGIN_LEFT = 50;
 let pair = [];
@@ -87,6 +88,7 @@ const gameOver = (result) => {
     }
     battlegroundBoard.classList.add('battleground-board-disable');
     resetGameVariables();
+    sundtrack.effect('slide-fall.mp3');
 }
 
 const victory = () => {

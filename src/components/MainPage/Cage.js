@@ -1,5 +1,6 @@
 import './Cage.sass';
 import { showBlood } from './Blood';
+import sundtrack from '../Sound';
 
 const CAGE_LIFE = 220;
 const BROKEN_CHAIN = 90;
@@ -19,6 +20,7 @@ const brokenChain = () => {
 const showCage = () => {
     const cage = document.querySelector('#cage');
     cage.style.setProperty('--cage-margin-top', '-220px');
+    sundtrack.effect('chain-down.mp3');
 }
 
 const cageDown = () => {
@@ -26,9 +28,12 @@ const cageDown = () => {
     let marginTop = parseInt(cage.style.getPropertyValue('--cage-margin-top'));
     let damage = (CAGE_LIFE - BROKEN_CHAIN) * 0.2;
     cage.style.setProperty('--cage-margin-top', marginTop + damage + 'px');
+    sundtrack.effect('chain-down.mp3');
+    playHeartbeatIfLowHealth();
 }
 
 const cageGameOver = () => {
+    sundtrack.effect('chain-down-game-over.mp3');
     lowerDownMax();
     breakChain();
 }
@@ -41,12 +46,23 @@ const lowerDownMax = () => {
 const breakChain = () => {
     const cage = document.querySelector('#cage');
     const cageAiri = document.querySelector('.cage-airi');
-    cage.addEventListener('transitionend', () => { 
-        cageAiri.classList.add('cage-airi-game-over');
-        cageAiri.addEventListener('transitionend', () => { 
-            showBlood();
-        });        
+    cage.addEventListener('transitionend', {
+        handleEvent: function (e) {
+            cageAiri.classList.add('cage-airi-game-over');
+            sundtrack.effect('girl-scream.mp3');
+            cage.removeEventListener(e.type, this, false);
+            cageAiri.addEventListener('transitionend', () => {
+                sundtrack.effect('body-hit-ground.mp3');
+                showBlood();
+            }); 
+        }       
     });
+}
+
+const playHeartbeatIfLowHealth = () => {
+    const airiHealth = document.querySelector('.battleground-stats-airi');
+    let health = parseInt(airiHealth.style.getPropertyValue('--stats-airi-health'));
+    if (health <= 20 && health > 0) sundtrack.effect('heartbeat.mp3');
 }
 
 const render = () => {

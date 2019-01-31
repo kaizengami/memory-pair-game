@@ -1,3 +1,5 @@
+import settings from './Settings';
+
 const sundtrack = {
     create : function(url, loop = false, muted = true) {
       let audio = new Audio();
@@ -20,7 +22,12 @@ const sundtrack = {
     change : function(url) {
       const audio = document.getElementById('soundtrack');
       audio.src = `static/media-files/sound/${url}`;
-    }
+    },
+    effect : function(url) {
+      let audio = new Audio(`static/media-files/sound/${url}`);
+      audio.muted = !settings.sound;
+      audio.play();
+    } 
 }
 
 export default sundtrack;

@@ -1,6 +1,7 @@
 import './DialogBox.sass';
 import countdown from './Countdown';
 import { showCage } from './Cage';
+import sundtrack from '../Sound';
 
 const dialog = (avatar, dialogBox, buttonOk) => {
     return `<div id="dialog">${avatar}${dialogBox}${buttonOk}</div>`;
@@ -40,9 +41,14 @@ const applyButton = () => {
         showCage();
         countdown();
         setTimeout(() => {
+            sundtrack.effect('board-fall.mp3');
             battlegroundBoard.classList.add('battleground-board-show');
-            battlegroundBoard.addEventListener('transitionend', () => { 
-                battlegroundBoard.classList.add('battleground-board-rebound');
+            battlegroundBoard.addEventListener('transitionend', { 
+                handleEvent: function (e) {
+                    sundtrack.effect('board-hit-floor.mp3');
+                    battlegroundBoard.classList.add('battleground-board-rebound');
+                    battlegroundBoard.removeEventListener(e.type, this, false);
+                }
             });
         }, 3000);
     });

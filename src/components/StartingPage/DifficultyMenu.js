@@ -1,6 +1,7 @@
 import './DifficultyMenu.sass';
 import mainPage from '../MainPage/MainPage';
 import blackScreen from '../PageTransition/BlackScreenTransition';
+import sundtrack from '../Sound';
 
 const gameDifficultyMenu = () => {
     return `<div class="difficulty-menu">
@@ -51,6 +52,7 @@ const pageTransitionEffect = () => {
     const menu = document.querySelector('.difficulty-menu');
     menu.classList.add('difficulty-menu-transition');
     blackScreen.toBlack();
+    sundtrack.effect('planet-transition.mp3');
 }
 
 const renderDifficultyMenu = () => {
