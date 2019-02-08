@@ -1,6 +1,6 @@
 # Memory – Pair Game
 
-## [Demo](https://kurosavaakira.github.io/memory-pair-game/dist/) 
+## [Demo](https://kaizengami.github.io/memory-pair-game/dist/) 
 
 ## Project Setup
 
