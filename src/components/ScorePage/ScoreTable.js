@@ -34,6 +34,7 @@ const restartGame = () => {
 
 const cleanDom = () => {
     document.getElementById('game-scene').remove();
+    document.querySelector('.sentry-gun').remove();
     document.getElementById('cage').remove();
     document.getElementById('battleground-stats').remove();
     document.getElementById('battleground-board').remove(); 

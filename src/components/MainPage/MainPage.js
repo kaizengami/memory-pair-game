@@ -4,6 +4,7 @@ import sundtrack from '../Sound';
 import renderGameScene from './GameScene';
 import { renderBattlegroundStats } from './BattlegroundStats';
 import renderBattlegroundBoard from './BattlegroundBoard';
+import { renderSentryGun } from './SentryGun';
 import { renderCage } from './Cage';
 import { renderBlood } from './Blood';
 import renderDialogBox from './DialogBox';
@@ -13,6 +14,7 @@ const mainPage = () => {
     sundtrack.change('main-page.mp3');
     renderGameScene();
     renderBattlegroundBoard();
+    renderSentryGun();
     renderCage();
     renderBattlegroundStats();
     renderBlood();

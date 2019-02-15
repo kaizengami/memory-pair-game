@@ -367,6 +367,31 @@ button, input[type="submit"], input[type="reset"] {
   background-position: center center;
   transform: rotateY(180deg); }
 
+.sentry-gun, .fire-ball {
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center; }
+
+.sentry-gun {
+  background-image: url(111ca294ca58424d6a9020057bb22aea.png);
+  height: 100px;
+  width: 100px;
+  top: 0;
+  right: 50px;
+  top: -5px; }
+
+.fire-ball {
+  background-image: url(5ed0407783c8a096eb8578b611bae809.gif);
+  height: 100px;
+  width: 100px;
+  top: 0;
+  transition: top 1s linear;
+  opacity: .8; }
+
+.fire-ball-shoot {
+  top: 1000px; }
+
 #dialog {
   position: fixed;
   width: 1560px;
