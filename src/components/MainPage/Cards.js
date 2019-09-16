@@ -1,5 +1,5 @@
-import './cards.sass';
-import cardImages from './CardImages';
+import "./Cards.sass";
+import cardImages from "./CardImages";
 
 const NUMBER_OF_CARDS = 12;
 
@@ -19,33 +19,33 @@ class Card {
   }
 }
 
-const shuffleCardsImg = (cards) => {
-    return cards.sort( () => Math.random() - 0.5) ;
-}
+const shuffleCardsImg = cards => {
+  return cards.sort(() => Math.random() - 0.5);
+};
 //Сut off half of the cards to create a duplicate of each card
-const cutHalfCardsImg = () => { 
-    return cardImages.slice(0, NUMBER_OF_CARDS / 2);
-}
+const cutHalfCardsImg = () => {
+  return cardImages.slice(0, NUMBER_OF_CARDS / 2);
+};
 
 const cloneCardsImg = () => {
-    let gameCards = cutHalfCardsImg();
-    for (let i = gameCards.length - 1; i >= 0; i--){
-      gameCards.push(gameCards[i]);
-    }
-    return cardsImgFinal = gameCards;
-}
+  let gameCards = cutHalfCardsImg();
+  for (let i = gameCards.length - 1; i >= 0; i--) {
+    gameCards.push(gameCards[i]);
+  }
+  return (cardsImgFinal = gameCards);
+};
 
 const generateCards = () => {
-// Starting position begins at the left top corner.
-// Each new items is generated from left to right. 
-// After every 6 items, there will be a new line.
-//
-//  y
-//  ↑
-//  ╎ (0:0)
-//  ╎  ▯▯▯▯▯▯ 
-//  ╎  ▯▯▯▯▯▯
-//  -----------→x 
+  // Starting position begins at the left top corner.
+  // Each new items is generated from left to right.
+  // After every 6 items, there will be a new line.
+  //
+  //  y
+  //  ↑
+  //  ╎ (0:0)
+  //  ╎  ▯▯▯▯▯▯
+  //  ╎  ▯▯▯▯▯▯
+  //  -----------→x
   let x = 75;
   let y = 90;
   for (let i = 0; i < NUMBER_OF_CARDS; i++) {
@@ -54,14 +54,14 @@ const generateCards = () => {
     x += 120;
     cards.push(new Card(x, y, cardsImgFinal[i]));
   }
-}
+};
 
 const resetCardsForNextGame = () => {
-  return cards = [];
-}
+  return (cards = []);
+};
 
 const generateCardsHtml = () => {
-  let htmlString = '';
+  let htmlString = "";
   for (let i = 0; i < NUMBER_OF_CARDS; i++) {
     htmlString += `<div class="card" id="${cards[i].id}">
                       <div class="card-content" style="margin-left: ${cards[i].x}px; margin-top: ${cards[i].y}px">
@@ -71,15 +71,19 @@ const generateCardsHtml = () => {
                     </div>`;
   }
   return htmlString;
-}
+};
 
 const render = () => {
-    shuffleCardsImg(cardImages);
-    cutHalfCardsImg();
-    cloneCardsImg();
-    shuffleCardsImg(cardsImgFinal);
-    generateCards();
-    return generateCardsHtml();
-}
+  shuffleCardsImg(cardImages);
+  cutHalfCardsImg();
+  cloneCardsImg();
+  shuffleCardsImg(cardsImgFinal);
+  generateCards();
+  return generateCardsHtml();
+};
 
-export { render as cards, cards as cardsData, resetCardsForNextGame as resetCards };
+export {
+  render as cards,
+  cards as cardsData,
+  resetCardsForNextGame as resetCards
+};

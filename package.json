@@ -1,6 +1,6 @@
 {
   "name": "memory-pair-game",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Memory-pair Game",
   "main": "index.js",
   "scripts": {
@@ -14,25 +14,25 @@
     "url": "git+https://github.com/KurosavaAkira/memory-pair-game"
   },
   "keywords": [],
-  "author": "",
+  "author": "kaizengami",
   "license": "MIT",
   "homepage": "https://github.com/KurosavaAkira/memory-pair-game",
   "devDependencies": {
-    "babel-loader": "^8.0.4",
+    "babel-loader": "^8.0.6",
     "babel-preset-env": "^1.7.0",
-    "clean-webpack-plugin": "^1.0.0",
-    "copy-webpack-plugin": "^4.6.0",
-    "css-loader": "^1.0.1",
-    "file-loader": "^2.0.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.0.4",
+    "css-loader": "^3.2.0",
+    "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
-    "mini-css-extract-plugin": "^0.4.5",
-    "node-sass": "^4.10.0",
-    "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.1",
-    "url-loader": "^1.1.2",
-    "webpack": "^4.26.1",
-    "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.14",
-    "webpack-merge": "^4.1.4"
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
+    "url-loader": "^2.1.0",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.8",
+    "webpack-dev-server": "^3.8.0",
+    "webpack-merge": "^4.2.2"
   }
 }

@@ -1,53 +1,59 @@
-import './BattlegroundStats.sass';
-import { cageDown } from './Cage';
+import "./BattlegroundStats.sass";
+import { cageDown } from "./Cage";
 
 let health = {
-    airi : 100,
-    you : 101
-}
+  airi: 100,
+  you: 101
+};
 
-const container = document.getElementById('container');
+const container = document.getElementById("container");
 
 const stats = () => {
-    return `<div id="battleground-stats">${statsImage()}</div>`;
-}
+  return `<div id="battleground-stats">${statsImage()}</div>`;
+};
 
 const statsImage = () => {
-    return `<div class="battleground-stats-image">${healthAiri() + healthPlayer()}</div>`;
-}
+  return `<div class="battleground-stats-image">${healthAiri() +
+    healthPlayer()}</div>`;
+};
 
 const healthAiri = () => {
-    return `<div class="battleground-stats-airi"></div>`;
-}
+  return `<div class="battleground-stats-airi"></div>`;
+};
 
 const healthPlayer = () => {
-    return `<div class="battleground-stats-player"></div>`;
-}
+  return `<div class="battleground-stats-player"></div>`;
+};
 
 const updateStats = (airiDamage, playerDamage) => {
-    if (airiDamage) airiReduceLife();
-    if (playerDamage) playerReduceLife();
-}
+  if (airiDamage) airiReduceLife();
+  if (playerDamage) playerReduceLife();
+};
 
 const airiReduceLife = () => {
-    //const statsPlayer = document.querySelector('.battleground-stats-player');
-    const statsAiri = document.querySelector('.battleground-stats-airi');
-    health.airi = health.airi - 20;
-    statsAiri.style.setProperty('--stats-airi-health', health.airi + '%');
-    cageDown();
-}
+  //const statsPlayer = document.querySelector('.battleground-stats-player');
+  const statsAiri = document.querySelector(".battleground-stats-airi");
+  health.airi = health.airi - 20;
+  statsAiri.style.setProperty("--stats-airi-health", health.airi + "%");
+  cageDown();
+};
 
 const checkStats = () => {
-    if (health.airi === 0 || health.player === 0) return 'dead';
-}
+  if (health.airi === 0 || health.player === 0) return "dead";
+};
 
 const resetStats = () => {
-    health.airi = 100;
-    health.player = 101;
-}
+  health.airi = 100;
+  health.player = 101;
+};
 
 const render = () => {
-    container.insertAdjacentHTML('beforeend', stats());
-}
+  container.insertAdjacentHTML("beforeend", stats());
+};
 
-export { render as renderBattlegroundStats, updateStats, resetStats, checkStats };
+export {
+  render as renderBattlegroundStats,
+  updateStats,
+  resetStats,
+  checkStats
+};
