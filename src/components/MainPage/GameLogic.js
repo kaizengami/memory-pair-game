@@ -1,14 +1,16 @@
 import { cardsData, resetCards } from "./Cards";
 import { updateStats, checkStats, resetStats } from "./BattlegroundStats";
 import { cageGameOver } from "./Cage";
-import { stopTimer } from "./Timer";
+import { stopTimer, userTime } from "./Timer";
 import scorePage from "../ScorePage/ScorePage";
 import sundtrack from "../Sound";
+import settings from "../Settings.js";
 
 const MARGIN_LEFT = 50;
 let pair = [];
 let numberOfPairs = 0;
 let cardZindex = 2;
+let numberOfAttempts = 0;
 
 const addClickEventToCards = () => {
   const battlegroundBoardField = document.querySelector(
@@ -39,6 +41,8 @@ const checkPair = () => {
     updateStats(airiDamage());
     if (checkStats() === "dead") gameOver("defeat");
   } else if (pair[0].img === pair[1].img) correctPair();
+  ++numberOfAttempts;
+  console.log(numberOfAttempts);
 };
 
 const airiDamage = () => {
@@ -91,6 +95,8 @@ const gameOver = result => {
       break;
   }
   stopTimer();
+  settings.gameScore.time = userTime;
+  settings.gameScore.numberOfAttempts = numberOfAttempts;
   battlegroundBoard.classList.add("battleground-board-disable");
   resetGameVariables();
   sundtrack.effect("slide-fall.mp3");
@@ -98,12 +104,14 @@ const gameOver = result => {
 
 const victory = () => {
   showScorePage("victory");
+  settings.gameScore.victory = true;
 };
 
 const defeat = () => {
   cageGameOver();
   setTimeout(() => {
     showScorePage("defeat");
+    settings.gameScore.victory = false;
   }, 3000);
 };
 
@@ -145,6 +153,7 @@ const resetGameVariables = () => {
   pair = [];
   numberOfPairs = 0;
   cardZindex = 2;
+  numberOfAttempts = 0;
 };
 
 const applyGameLogic = () => {

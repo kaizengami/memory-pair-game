@@ -2,7 +2,7 @@ import "./Timer.sass";
 import scorePage from "../ScorePage/ScorePage";
 import { cageGameOver } from "./Cage";
 
-export let startTime = 1;
+export let startTime = 60;
 
 let timer;
 

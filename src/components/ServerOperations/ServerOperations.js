@@ -1,7 +1,7 @@
 import "./ServerOperations.sass";
+import settings from "../Settings.js";
 
 const API_LINK = `https://memory-pair-game-back.herokuapp.com`;
-const proxyUrl = "https://cors-anywhere.herokuapp.com/";
 
 const loginFetch = async () => {
   const LOGIN_LINK = `${API_LINK}/auth/signin`;
@@ -11,11 +11,19 @@ const loginFetch = async () => {
     password: "megaPassword256"
   };
 
+  let responseData = {
+    status: null,
+    token: null
+  };
+
   try {
     const response = await fetch(LOGIN_LINK, {
       method: "POST",
       mode: "cors",
-      body: JSON.stringify(BODY)
+      body: JSON.stringify(BODY),
+      headers: {
+        "Content-Type": "application/json"
+      }
     });
     if (!response.ok) {
       console.log(response);
@@ -25,27 +33,38 @@ const loginFetch = async () => {
     }
 
     let data = await response;
+    // console.log(data.body.JSON());
 
-    responseData.status = data.status;
-    responseData.data = data.headers.get("Authorization");
+    // responseData.status = data.status;
+    // responseData.token = data.accessToken;
+    // console.log(response.body);
 
-    return responseData;
+    return data.json();
   } catch (err) {
+    console.log(err);
+
     return responseData;
   }
 };
 
 const loginDom = text => {
-  `<div id="server-operations-login">${text}</div>`;
+  return `<div id="server-operations-login">${text}</div>`;
 };
 
 const renderLogin = async () => {
   const container = document.getElementById("container");
 
-  container.insertAdjacentHTML("beforeend", loginDom("Connecting to server"));
+  container.insertAdjacentHTML(
+    "beforeend",
+    loginDom("Connecting to server...")
+  );
+
   let result = await loginFetch();
-  console.log(result);
-  document.getElementById("server-operations-login").remove();
+  settings.token = result.accessToken;
+
+  setTimeout(() => {
+    document.getElementById("server-operations-login").remove();
+  }, 1000);
 };
 
 export { renderLogin };

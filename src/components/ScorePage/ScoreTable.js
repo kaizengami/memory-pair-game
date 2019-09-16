@@ -3,6 +3,7 @@ import blackScreen from "../PageTransition/BlackScreenTransition";
 import { changeFullScreenVideo } from "../FullScreenVideo/FullScreenVideo";
 import sundtrack from "../Sound";
 import startingPage from "../StartingPage/StartingPage";
+import settings from "../Settings.js";
 
 const resultArray = {};
 
@@ -35,6 +36,7 @@ const addPlayAgainEvent = () => {
 };
 
 const restartGame = () => {
+  settings.gameScore.numberOfAttempts = 0;
   blackScreen.toBlack();
   const blackScreenDom = document.getElementById("black-screen-in");
   const soundtrack = document.getElementById("soundtrack");
@@ -61,6 +63,8 @@ const cleanDom = () => {
 };
 
 const render = () => {
+  console.log(settings);
+
   const scorePage = document.getElementById("score-page");
   const scorePageCongratulation = document.querySelector(
     ".score-page-congratulation"
