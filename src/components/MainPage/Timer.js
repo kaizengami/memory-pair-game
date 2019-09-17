@@ -7,6 +7,7 @@ export let startTime = 60;
 let timer;
 
 const stopTimer = () => {
+  startTime = 60;
   clearInterval(timer);
 };
 
