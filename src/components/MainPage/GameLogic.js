@@ -1,7 +1,7 @@
 import { cardsData, resetCards } from "./Cards";
 import { updateStats, checkStats, resetStats } from "./BattlegroundStats";
 import { cageGameOver } from "./Cage";
-import { stopTimer, userTime } from "./Timer";
+import { stopTimer, userTime, resetTimer } from "./Timer";
 import scorePage from "../ScorePage/ScorePage";
 import sundtrack from "../Sound";
 import settings from "../Settings.js";
@@ -154,6 +154,7 @@ const resetGameVariables = () => {
   numberOfPairs = 0;
   cardZindex = 2;
   numberOfAttempts = 0;
+  resetTimer();
 };
 
 const applyGameLogic = () => {

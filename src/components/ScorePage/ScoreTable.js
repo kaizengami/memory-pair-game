@@ -74,7 +74,7 @@ const addSumbitEvent = () => {
 const getUserScore = userName => {
   return {
     name: userName,
-    time: settings.gameScore.time,
+    time: 60 - settings.gameScore.time,
     points:
       parseInt(settings.gameScore.time) * 1000 -
       settings.gameScore.numberOfAttempts * 100

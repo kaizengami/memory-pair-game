@@ -7,7 +7,6 @@ export let startTime = 60;
 let timer;
 
 const stopTimer = () => {
-  startTime = 60;
   clearInterval(timer);
 };
 
@@ -26,6 +25,10 @@ const checkTimer = () => {
   }
 };
 
+const resetTimer = () => {
+  startTime = 60;
+};
+
 const render = () => {
   const battlegroundStats = document.getElementById("battleground-stats");
   battlegroundStats.insertAdjacentHTML("beforeend", timerRender());
@@ -37,4 +40,4 @@ const render = () => {
   }, 1000);
 };
 
-export { render as renderTimer, stopTimer, startTime as userTime };
+export { render as renderTimer, stopTimer, startTime as userTime, resetTimer };
