@@ -11,12 +11,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KurosavaAkira/memory-pair-game"
+    "url": "git+https://github.com/kaizengami/memory-pair-game"
   },
   "keywords": [],
   "author": "kaizengami",
   "license": "MIT",
-  "homepage": "https://github.com/KurosavaAkira/memory-pair-game",
+  "homepage": "https://github.com/kaizengami/memory-pair-game",
   "devDependencies": {
     "babel-loader": "^8.0.6",
     "babel-preset-env": "^1.7.0",

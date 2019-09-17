@@ -4,29 +4,98 @@ import { changeFullScreenVideo } from "../FullScreenVideo/FullScreenVideo";
 import sundtrack from "../Sound";
 import startingPage from "../StartingPage/StartingPage";
 import settings from "../Settings.js";
+import { getScores, postUserScore } from "../ServerOperations/ServerOperations";
 
 const resultArray = {};
 
 const scoreTable = () => {
   return `<div id="score-table-wrapper">
-            <div class="score">
-                <div class="score-title">Name</div>
-                <div class="score-title">Time</div>
-                <div class="score-title">Points</div>
-            </div>
-            <div class="score">
-                <div class="score-result">Test name</div>
-                <div class="score-result">32 sec</div>
-                <div class="score-result">900</div>
-            </div>
-         </div>
          <buttom id="play-again">Play again</button>`;
 };
 
-{
-  /* <div class="scores">Web server for score table will be available in next updates...</div>
-<buttom id="play-again">Play again</button> */
-}
+const creatScoreHtml = score => {
+  const { name, time, points } = score;
+
+  return ` <div class="score-result">${name}</div>
+             <div class="score-result">${time} sec</div>
+             <div class="score-result">${points}</div>`;
+};
+
+const generateScores = scores => {
+  const header = `<div class="score">
+                        <div class="score-title">Name</div>
+                        <div class="score-title">Time</div>
+                        <div class="score-title">Points</div>
+                     </div>`;
+  return (
+    header +
+    '<div class="score">' +
+    scores.map(score => creatScoreHtml(score)).join("") +
+    "</div>"
+  );
+};
+
+const userInput = () => {
+  return `<div id="submit-wrapper"> 
+                <div id="input-wrapper">    
+                    <input placeholder="Your name..." type="text" name="userName" id="user-input">
+                    <div class="buttons-wrapper">
+                        <button id="submit-name">Submit</button>
+                        <button id="submit-cancel">Cancel</button>
+                    </div>
+                </div>
+            </div>`;
+};
+
+const addSumbitEvent = () => {
+  const submitName = document.getElementById("submit-name");
+  const userName = document.getElementById("user-input");
+  const scoreTableDom = document.getElementById("score-table-wrapper");
+
+  userName.focus();
+  submitName.addEventListener("click", async () => {
+    if (userName.value === "") {
+      return;
+    } else {
+      console.log(userName.value);
+      let postReult = await postUserScore(getUserScore(userName.value));
+      console.log(postReult);
+      let socres = await getScores();
+      console.log(socres);
+      document.getElementById("submit-wrapper").remove();
+
+      let scoresHtml = generateScores(socres);
+      scoreTableDom.insertAdjacentHTML("beforeend", scoresHtml);
+      showScoreTable();
+    }
+  });
+};
+
+const getUserScore = userName => {
+  return {
+    name: userName,
+    time: settings.gameScore.time,
+    points:
+      parseInt(settings.gameScore.time) * 1000 -
+      settings.gameScore.numberOfAttempts * 100
+  };
+};
+
+const showScoreTable = () => {
+  const scoreTableDom = document.getElementById("score-table-wrapper");
+  const playAgain = document.getElementById("play-again");
+  scoreTableDom.classList.add("score-table-visible");
+  playAgain.classList.add("score-table-visible");
+};
+
+const addCancelEvent = () => {
+  const submitCancel = document.getElementById("submit-cancel");
+  submitCancel.addEventListener("click", () => {
+    console.log("sumbit cancel");
+    document.getElementById("submit-wrapper").remove();
+    showScoreTable();
+  });
+};
 
 const addPlayAgainEvent = () => {
   const playAgain = document.getElementById("play-again");
@@ -69,13 +138,25 @@ const render = () => {
   const scorePageCongratulation = document.querySelector(
     ".score-page-congratulation"
   );
+
   scorePage.insertAdjacentHTML("beforeend", scoreTable());
   const scoreTableDom = document.getElementById("score-table-wrapper");
   const playAgain = document.getElementById("play-again");
 
-  scorePageCongratulation.addEventListener("animationend", () => {
-    scoreTableDom.classList.add("score-table-visible");
-    playAgain.classList.add("score-table-visible");
+  scorePageCongratulation.addEventListener("animationend", async () => {
+    if (settings.gameScore.victory) {
+      scorePage.insertAdjacentHTML("beforeend", userInput());
+      addSumbitEvent();
+      addCancelEvent();
+    } else {
+      let socres = await getScores();
+      console.log(socres);
+      let scoresHtml = generateScores(socres);
+      scoreTableDom.insertAdjacentHTML("beforeend", scoresHtml);
+
+      scoreTableDom.classList.add("score-table-visible");
+      playAgain.classList.add("score-table-visible");
+    }
   });
   addPlayAgainEvent();
 };

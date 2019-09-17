@@ -21,7 +21,7 @@ const checkTimer = () => {
     setTimeout(() => {
       scorePage("defeat");
     }, 3000);
-    startTime = 6;
+    startTime = 60;
   }
 };
 

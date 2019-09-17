@@ -31,13 +31,73 @@ const loginFetch = async () => {
       responseData.data = response.data;
       throw new Error(response);
     }
-
     let data = await response;
-    // console.log(data.body.JSON());
 
-    // responseData.status = data.status;
-    // responseData.token = data.accessToken;
-    // console.log(response.body);
+    return data.json();
+  } catch (err) {
+    console.log(err);
+
+    return responseData;
+  }
+};
+
+const postScoreFetch = async userResult => {
+  const POST_SCORE_LINK = `${API_LINK}/tasks`;
+
+  let responseData = {
+    status: null,
+    token: null
+  };
+
+  try {
+    const response = await fetch(POST_SCORE_LINK, {
+      method: "POST",
+      mode: "cors",
+      body: JSON.stringify(userResult),
+      headers: {
+        Authorization: `Bearer ${settings.token}`,
+        "Content-Type": "application/json"
+      }
+    });
+    if (!response.ok) {
+      console.log(response);
+      responseData.status = response.status;
+      responseData.data = response.data;
+      throw new Error(response);
+    }
+    let data = await response;
+
+    return data.json();
+  } catch (err) {
+    console.log(err);
+
+    return responseData;
+  }
+};
+
+const scoresFetch = async () => {
+  const SCORES_LINK = `${API_LINK}/tasks`;
+
+  let responseData = {
+    status: null,
+    token: null
+  };
+
+  try {
+    const response = await fetch(SCORES_LINK, {
+      method: "GET",
+      mode: "cors",
+      headers: {
+        Authorization: `Bearer ${settings.token}`
+      }
+    });
+    if (!response.ok) {
+      console.log(response);
+      responseData.status = response.status;
+      responseData.data = response.data;
+      throw new Error(response);
+    }
+    let data = await response;
 
     return data.json();
   } catch (err) {
@@ -67,4 +127,8 @@ const renderLogin = async () => {
   }, 1000);
 };
 
-export { renderLogin };
+export {
+  renderLogin,
+  scoresFetch as getScores,
+  postScoreFetch as postUserScore
+};
