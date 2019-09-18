@@ -130,7 +130,7 @@ const addSumbitEvent = () => {
       console.log(scoresData);
       document.getElementById("submit-wrapper").remove();
 
-      renderScores(scoresData);
+      renderScores(scores);
       addScoreTitleEvent();
       showScoreTable();
     }
@@ -156,9 +156,16 @@ const showScoreTable = () => {
 
 const addCancelEvent = () => {
   const submitCancel = document.getElementById("submit-cancel");
-  submitCancel.addEventListener("click", () => {
+  submitCancel.addEventListener("click", async () => {
     console.log("sumbit cancel");
     document.getElementById("submit-wrapper").remove();
+
+    let scoresData = await getScores();
+    scores = scoresData;
+    scores.sort((a, b) => desc(a.id, b.id));
+    console.log(scoresData);
+    renderScores(scores);
+    addScoreTitleEvent();
     showScoreTable();
   });
 };
