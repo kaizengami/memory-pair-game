@@ -114,10 +114,7 @@ const loginDom = text => {
 const renderLogin = async () => {
   const container = document.getElementById("container");
 
-  container.insertAdjacentHTML(
-    "beforeend",
-    loginDom("Connecting to server...")
-  );
+  container.insertAdjacentHTML("afterend", loginDom("Connecting to server..."));
 
   let result = await loginFetch();
   settings.token = result.accessToken;
