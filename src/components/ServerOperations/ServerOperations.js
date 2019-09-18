@@ -42,7 +42,7 @@ const loginFetch = async () => {
 };
 
 const postScoreFetch = async userResult => {
-  const POST_SCORE_LINK = `${API_LINK}/tasks`;
+  const POST_SCORE_LINK = `${API_LINK}/scores`;
 
   let responseData = {
     status: null,
@@ -76,7 +76,7 @@ const postScoreFetch = async userResult => {
 };
 
 const scoresFetch = async () => {
-  const SCORES_LINK = `${API_LINK}/tasks`;
+  const SCORES_LINK = `${API_LINK}/scores`;
 
   let responseData = {
     status: null,
