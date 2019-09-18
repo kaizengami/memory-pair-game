@@ -6,7 +6,25 @@ import startingPage from "../StartingPage/StartingPage";
 import settings from "../Settings.js";
 import { getScores, postUserScore } from "../ServerOperations/ServerOperations";
 
-const resultArray = {};
+let scores = [];
+let sort = "";
+
+const asc = (a, b) => {
+  console.log(typeof a);
+  if (typeof a === "string") {
+    if (a < b) return -1;
+    if (a > b) return 1;
+  }
+  return a - b;
+};
+
+const desc = (a, b) => {
+  if (typeof a === "string") {
+    if (a < b) return 1;
+    if (a > b) return -1;
+  }
+  return b - a;
+};
 
 const scoreTable = () => {
   return `<div id="score-table-wrapper">
@@ -24,17 +42,55 @@ const creatScoreHtml = score => {
 
 const generateScores = scores => {
   const header = `<div class="score">
-                        <div class="score-title">Name</div>
-                        <div class="score-title">Time</div>
-                        <div class="score-title">Difficulty</div>
-                        <div class="score-title">Points</div>
+                        <button class="score-title" name="name">Name</button>
+                        <button class="score-title" name="time">Time</button>
+                        <button class="score-title" name="status">Difficulty</button>
+                        <button class="score-title" name="points">Points</button>
                      </div>`;
+
   return (
     header +
     '<div class="score">' +
     scores.map(score => creatScoreHtml(score)).join("") +
     "</div>"
   );
+};
+
+const addScoreTitleEvent = () => {
+  const scoreTitle = document.querySelector(".score");
+
+  scoreTitle.addEventListener("click", e => {
+    const buttonName = e.target.name;
+
+    switch (buttonName) {
+      case "name":
+        applySorting(buttonName);
+        break;
+      case "time":
+        applySorting(buttonName);
+        break;
+      case "status":
+        applySorting(buttonName);
+        break;
+      case "points":
+        applySorting(buttonName);
+        break;
+    }
+    document.querySelectorAll(".score").forEach(e => e.remove());
+    renderScores(scores);
+  });
+};
+
+const applySorting = name => {
+  if (name === sort) {
+    sort = "";
+    scores.sort((a, b) => desc(a[name], b[name]));
+    console.log(scores);
+  } else {
+    sort = name;
+    scores.sort((a, b) => asc(a[name], b[name]));
+    console.log(scores);
+  }
 };
 
 const userInput = () => {
@@ -49,25 +105,33 @@ const userInput = () => {
             </div>`;
 };
 
+const renderScores = scoresData => {
+  const scoreTableDom = document.getElementById("score-table-wrapper");
+
+  let scoresHtml = generateScores(scoresData);
+  scoreTableDom.insertAdjacentHTML("beforeend", scoresHtml);
+  addScoreTitleEvent();
+};
+
 const addSumbitEvent = () => {
   const submitName = document.getElementById("submit-name");
   const userName = document.getElementById("user-input");
-  const scoreTableDom = document.getElementById("score-table-wrapper");
 
   userName.focus();
   submitName.addEventListener("click", async () => {
     if (userName.value === "") {
       return;
     } else {
-      console.log(userName.value);
       let postReult = await postUserScore(getUserScore(userName.value));
       console.log(postReult);
-      let socres = await getScores();
-      console.log(socres);
+      let scoresData = await getScores();
+      scores = scoresData;
+      scores.sort((a, b) => desc(a.id, b.id));
+      console.log(scoresData);
       document.getElementById("submit-wrapper").remove();
 
-      let scoresHtml = generateScores(socres);
-      scoreTableDom.insertAdjacentHTML("beforeend", scoresHtml);
+      renderScores(scoresData);
+      addScoreTitleEvent();
       showScoreTable();
     }
   });
@@ -151,11 +215,13 @@ const render = () => {
       addSumbitEvent();
       addCancelEvent();
     } else {
-      let socres = await getScores();
-      console.log(socres);
-      let scoresHtml = generateScores(socres);
+      let scoresData = await getScores();
+      scores = scoresData;
+      scores.sort((a, b) => desc(a.id, b.id));
+      console.log(scoresData);
+      let scoresHtml = generateScores(scoresData);
       scoreTableDom.insertAdjacentHTML("beforeend", scoresHtml);
-
+      addScoreTitleEvent();
       scoreTableDom.classList.add("score-table-visible");
       playAgain.classList.add("score-table-visible");
     }
