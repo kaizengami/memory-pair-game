@@ -14,10 +14,11 @@ const scoreTable = () => {
 };
 
 const creatScoreHtml = score => {
-  const { name, time, points } = score;
+  const { name, time, status, points } = score;
 
   return ` <div class="score-result">${name}</div>
              <div class="score-result">${time} sec</div>
+             <div class="score-result">${status}</div>
              <div class="score-result">${points}</div>`;
 };
 
@@ -25,6 +26,7 @@ const generateScores = scores => {
   const header = `<div class="score">
                         <div class="score-title">Name</div>
                         <div class="score-title">Time</div>
+                        <div class="score-title">Difficulty</div>
                         <div class="score-title">Points</div>
                      </div>`;
   return (
